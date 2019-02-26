@@ -25,11 +25,9 @@ int merge(int *arr, int l, int m, int r) {
 		ah2[j] = arr[m+j+1];
 	}
 	
-	printArr(ah1, s1);
-	printArr(ah2, s2);
+
 	// Actual merge
 	int i = 0, j = 0, k = l;
-	printf("%d %d %d \n", i,j,k);
 	while(i<s1 && j<s2){
 		if(ah1[i]<=ah2[j]){
 			arr[k] = ah1[i];
@@ -60,7 +58,6 @@ int sort(int *arr, int l, int r) {
 	if(l < r) {
 		int m = (r+l)/2;
 
-		printf("%d %d %d \n", l, m, r);
 
 		sort(arr, l, m);
 		sort(arr, m+1, r);
@@ -72,11 +69,23 @@ int sort(int *arr, int l, int r) {
 }
 
 int main() {
-	int arr[5] = {4,2,5,1,3}; //,100,20,37,9,1,8,3,11};
-	size_t s = sizeof(arr)/sizeof(int);
+	int *arr, s;
+	
+	printf("Enter size of your array\n");
+	scanf("%d", &s);
+	
+	arr = malloc(s*sizeof(int));
+	
+	
+	
+	for(int m=0; m<s; ++m){
+		printf("Enter #%d number ", m+1);
+		scanf("%d", &arr[m]);
+	}
 
 	sort(arr, 0, s-1);
 	
+	printf("\nYour ordered array\n");
 	printArr(arr, s);
 	return 0;
 }
